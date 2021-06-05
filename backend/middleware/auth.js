@@ -12,8 +12,9 @@ export default (req, res, next)=>{
 
     //CHECK TOKEN
     try {
-        const decoded = jsonwebtoken.verify(token, process.env.JSWT);
-        req.user = decoded.user;
+        const decoded = jsonwebtoken.verify(token, process.env.JWST);
+        req.trader = decoded.trader;
+        req.customer = decoded.customer;
         next();
     } catch (error) {
         res.status(401).json({msg:('Token is not valid')});

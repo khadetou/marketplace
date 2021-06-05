@@ -8,7 +8,7 @@ import fs from 'fs';
 //@access private
 
 
-export const sendEmailToConfirm = async (user, req, res)=>{
+export const sendEmailToConfirm = async (user, req, res, users)=>{
         //RETURN JSONWEBTOKEN
         const preload = {
             user:{
@@ -19,7 +19,6 @@ export const sendEmailToConfirm = async (user, req, res)=>{
         //DEFINE OUR TOKEN AND SETTING EMAIL TOKEN
         const token  = await  jsonwebtoken.sign(preload, process.env.JWST,{expiresIn: 3000})
         
-        console.log(user.emailToken)
         user.emailToken = token;
       
         //EMAIL TEMPLATE ROUTE
@@ -28,7 +27,7 @@ export const sendEmailToConfirm = async (user, req, res)=>{
         const template = handlebars.compile(templateSource)
 
         //SETTING THE URL AND TRANSPORTER
-        const url  = `http://${req.headers.host}/api/register/checkemail?token=${token}`;
+        const url  = `http://${req.headers.host}/api/register/checkemail/${users}?token=${token}`;
 
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
@@ -50,7 +49,7 @@ export const sendEmailToConfirm = async (user, req, res)=>{
         }
 
 
-        //  SENG MAIL TO CONFIRM
+    //  SENG MAIL TO CONFIRM
     await transporter.sendMail(info, (err, response)=>{
             if(err){
                 console.log(err)

@@ -59,4 +59,13 @@ router.post('/trader',[
 }))
 
 
+//@route  Get/api/login/trader
+//@des get selfinfos 
+//@access Private
+router.get('/trader', auth, asyncHandler(async(req, res)=>{
+    const trader = await Trader.findById(req.trader.id).select('-password');
+  
+    res.json(trader);
+}))
+
 export default router;
