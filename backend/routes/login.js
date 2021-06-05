@@ -44,7 +44,7 @@ router.post('/trader',[
         res.status(400).json({msg: 'The email was not verified'})
     }
 
-    console.log(trader.id)
+
     //RETURN JSONWEBTOKEN
     const preload ={
         trader:{
