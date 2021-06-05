@@ -31,17 +31,26 @@ const traderSchema  = new mongoose.Schema({
         required: true,
         unique: true
     },
+    emailToken:{
+        type: String,
+        require: true, 
+    },
+    isVerified:{
+        type: Boolean,
+        require: true,
+        default: false
+    },
     password:{
         type: String,
         required: true
     },
     phoneNumber:{
         type: Number,
-        required: true
+        require: true
     },
     avatar:{
         type: String,
-        required: true
+        require: true
     },
     reviews:{reviewSchema},
     rating:{
@@ -51,12 +60,12 @@ const traderSchema  = new mongoose.Schema({
     },
     numReviews:{
         type: Number,
-        required: true,
+        require: true,
         default: 0
     },
     isTrader:{
         type: Boolean,
-        required: true,
+        require: true,
         default: true
     },
     date:{
