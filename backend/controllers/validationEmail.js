@@ -3,12 +3,13 @@ import jsonwebtoken from 'jsonwebtoken';
 import handlebars from 'handlebars'
 import path from 'path';
 import fs from 'fs';
+import crypto from 'crypto';
 //@desc Sendmail to the users of the app 
 //@acces Post /api/mail/send
 //@access private
 
 
-export const sendEmailToConfirm = async (user, req, res, users)=>{
+export const sendEmailToConfirm = async (user, req, res, users, action)=>{
         //RETURN JSONWEBTOKEN
         const preload = {
             user:{
@@ -17,7 +18,15 @@ export const sendEmailToConfirm = async (user, req, res, users)=>{
         }
 
         //DEFINE OUR TOKEN AND SETTING EMAIL TOKEN
-        const token  = await  jsonwebtoken.sign(preload, process.env.JWST,{expiresIn: 3000})
+        let token  ;
+
+        if(action === 'checkemail'){
+            token  =  jsonwebtoken.sign(preload, process.env.JWST,{expiresIn: '1h'})
+        }else{
+            token =  crypto.randomBytes(32).toString('hex');
+            token = crypto.createHash('sha256').update(token).digest('hex');
+            user.expires = Date.now() + 10 * 60 * 1000;
+        }
         
         user.emailToken = token;
       
@@ -27,7 +36,7 @@ export const sendEmailToConfirm = async (user, req, res, users)=>{
         const template = handlebars.compile(templateSource)
 
         //SETTING THE URL AND TRANSPORTER
-        const url  = `http://${req.headers.host}/api/register/checkemail/${users}?token=${token}`;
+        const url  = `http://${req.headers.host}/api/register/${action}/${users}?token=${token}`;
 
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
@@ -59,3 +68,5 @@ export const sendEmailToConfirm = async (user, req, res, users)=>{
             }
         });
 }
+
+

@@ -35,6 +35,10 @@ const traderSchema  = new mongoose.Schema({
         type: String,
         require: true, 
     },
+    expires:{
+        type: Date,
+        require: true
+    },
     isVerified:{
         type: Boolean,
         require: true,

@@ -53,7 +53,7 @@ router.post('/trader',[
         }
     }
     
-    jsonwebtoken.sign(preload, process.env.JWST, {expiresIn: '1d'}, (err, token)=>{
+    jsonwebtoken.sign(preload, process.env.JWST, {expiresIn: '1h'}, (err, token)=>{
         if(err) throw err;
         res.json({token})
     })
@@ -99,7 +99,7 @@ router.post('/customer',[
         }
     }
     
-    jsonwebtoken.sign(preload, process.env.JWST, {expiresIn: '1d'}, (err, token)=>{
+    jsonwebtoken.sign(preload, process.env.JWST, {expiresIn: '1h'}, (err, token)=>{
         if(err) throw err;
         res.json({token})
     })
