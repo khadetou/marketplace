@@ -14,7 +14,7 @@ const reviewSchema = mongoose.Schema({
 });
 
 const productSchema = mongoose.Schema({
-    user:{
+    trader:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Trader'

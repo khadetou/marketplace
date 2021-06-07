@@ -30,7 +30,8 @@ export default async (req, res, next)=>{
 
 
 
-export const isTrader = asyncHandler(async(req, res)=>{
+export const isTrader = asyncHandler(async(req, res, next)=>{
+   
     if(req.trader.isTrader){
         next();
     }else{

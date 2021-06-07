@@ -5,13 +5,13 @@ import {check} from 'express-validator';
 
 const router = express.Router();
 
+
 router.route('/').post([authMiddleware, isTrader ,
     check('name', 'Name is required').not().isEmpty(),
     check('image', 'Image is required').not().isEmpty(),
-    check('price','price is required').not().isEmpty()], createProduct)
-.get(authMiddleware, isTrader, getAllTraderProducts);
+    check('price','price is required').not().isEmpty()], createProduct);
 
-
+router.route('/all').get(authMiddleware, isTrader, getAllTraderProducts);
 
 router.route('/:id').put(authMiddleware, isTrader, updateProduct)
 .get(authMiddleware, isTrader, getTraderProductById)

@@ -18,7 +18,7 @@ export const createProduct = asyncHandler(async(req, res)=>{
     //CREATE AND UPDATE SECTION
     const {name, image, brand, category, description, rating, numReviews, price, countInStock} = req.body;
 
-
+    
     const productField = {};
     productField.trader = req.trader.id;
 
@@ -26,8 +26,9 @@ export const createProduct = asyncHandler(async(req, res)=>{
     if(image) productField.image = image;
     if(brand) productField.brand = brand;
     if(category) productField.category = category;
-    if(description) productField.rating = rating;
+    if(description) productField.description = description;
     if(numReviews) productField.price = price;
+    if(rating) productField.rating = rating;
     if(countInStock) productField.countInStock = countInStock;
 
 
@@ -70,7 +71,7 @@ export const updateProduct = asyncHandler(async(req, res)=>{
 })
 
 
-//@route  Get/api/products/trader
+//@route  Get/api/products/trader/all
 //@desc   Get the trader product
 //@access Private isTrader
 
@@ -79,7 +80,6 @@ export const getAllTraderProducts = asyncHandler(async(req, res)=>{
     let products = await Product.find({trader: req.trader.id});
 
     res.json(products);
-
 })
 
 
