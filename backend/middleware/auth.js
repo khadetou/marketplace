@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import Trader from '../models/trader.js';
 import Customer from '../models/customer.js';
-
+import asyncHandler from 'express-async-handler';
 
 export default async (req, res, next)=>{
     //GET TOKEN FROM  HEADER
@@ -27,3 +27,14 @@ export default async (req, res, next)=>{
         res.status(401).json({msg:('Token is not valid')});
     }
 }
+
+
+
+export const isTrader = asyncHandler(async(req, res)=>{
+    if(req.trader.isTrader){
+        next();
+    }else{
+        res.status(401);
+        throw new Error('Not authorized as  not Trader')
+    }
+})

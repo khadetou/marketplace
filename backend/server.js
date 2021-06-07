@@ -8,6 +8,7 @@ import register from './routes/register.js';
 import login from './routes/login.js';
 import customer from './routes/customer.js';
 import products from './routes/products.js';
+import trader from './routes/trader.js';
 
 //DOTENV AND EXPRESS CONFIG
 const app = express();
@@ -34,6 +35,7 @@ app.use('/api/register', register);
 app.use('/api/login', login);
 app.use('/api/customer', customer);
 app.use('/api/products', products);
+app.use('/api/products/trader', trader);
 
 //ERROR HANDLER
 app.use(notFound);
