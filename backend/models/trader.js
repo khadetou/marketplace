@@ -13,6 +13,18 @@ const reviewSchema = new mongoose.Schema({
     timestamps: true
 })
 
+const subscribersSchema = new mongoose.Schema({
+    firstName:{type:String, required: true},
+    lastName:{type: String, required: true},
+    email:{type: String, required: true, unique: true},
+    customer:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Customer'
+    }
+},{
+    timestamps: true
+})
 const traderSchema  = new mongoose.Schema({
     firstName:{
         type: String,
@@ -44,6 +56,7 @@ const traderSchema  = new mongoose.Schema({
         require: true,
         default: false
     },
+    subscription:[subscribersSchema],
     password:{
         type: String,
         required: true
@@ -56,7 +69,7 @@ const traderSchema  = new mongoose.Schema({
         type: String,
         require: true
     },
-    reviews:{reviewSchema},
+    reviews:[reviewSchema],
     rating:{
         type: Number,
         required: true,

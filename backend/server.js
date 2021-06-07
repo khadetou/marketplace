@@ -6,6 +6,7 @@ import {notFound, errorHandler} from './middleware/errorMiddleware.js';
 import mailing from './routes/mailing.js';
 import register from './routes/register.js';
 import login from './routes/login.js';
+import customer from './routes/customer.js';
 
 //DOTENV AND EXPRESS CONFIG
 const app = express();
@@ -30,6 +31,7 @@ app.use(express.json({extend:false}))
 app.use('/api/mail', mailing);
 app.use('/api/register', register);
 app.use('/api/login', login);
+app.use('/api/customer', customer);
 
 //ERROR HANDLER
 app.use(notFound);
