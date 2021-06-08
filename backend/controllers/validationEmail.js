@@ -59,7 +59,7 @@ export const sendEmailToConfirm = async (user, req, res, users, action)=>{
 
 
     //  SENG MAIL TO CONFIRM
-    await transporter.sendMail(info, (err, response)=>{
+        transporter.sendMail(info, (err, response)=>{
             if(err){
                 console.log(err)
             }else{
