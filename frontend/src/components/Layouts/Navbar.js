@@ -1,5 +1,5 @@
 import React from 'react';
-import {chakra, Box, Flex, Button, HStack, IconButton,InputRightElement, InputGroup, Input, Avatar, Tabs, TabList, Tab, Spacer, useColorModeValue, VisuallyHidden, useDisclosure, Link as CLink,  Drawer,
+import {chakra, Box, Flex, Button, HStack, IconButton,InputRightElement, InputGroup, Input, Avatar, Tabs, TabList, Tab, useColorModeValue, VisuallyHidden, useDisclosure, Link as CLink,  Drawer,
     DrawerBody,
     DrawerHeader,
     DrawerOverlay,
@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
     return (
-        <Box>
+        <Box shadow='md'>
             <chakra.header
             bg={bg}
             borderColor= 'gray.600'
@@ -179,7 +179,14 @@ const Navbar = () => {
                 borderWidth={0}
                 overflowX='auto'
             >
-
+                <Tabs defaultIndex={1} borderBottomColor='transparent'>
+                    <TabList>
+                        <Tab py={4} m ={0} _focus={{boxShadow:'none'}}>Basic</Tab>
+                        <Tab py={4} m ={0} _focus={{boxShadow:'none'}}>Basic</Tab>
+                        <Tab py={4} m ={0} _focus={{boxShadow:'none'}}>Basic</Tab>
+                        <Tab py={4} m ={0} _focus={{boxShadow:'none'}}>Basic</Tab>
+                    </TabList>
+                </Tabs>
             </Flex>
         </Box>
     )
