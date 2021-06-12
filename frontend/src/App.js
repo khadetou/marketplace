@@ -1,10 +1,10 @@
-
+import Navbar from './components/Layouts/Navbar';
 
 const App=()=> {
   return (
-    <div>
-   
-    </div>
+    < >
+        <Navbar/>
+    </>
   );
 }
 
