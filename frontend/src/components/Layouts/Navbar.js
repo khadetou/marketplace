@@ -6,7 +6,8 @@ import {chakra, Box, Flex, Button, HStack, IconButton,InputRightElement, InputGr
     DrawerContent,
     DrawerCloseButton,} from '@chakra-ui/react';
 import {Link as RLink} from 'react-router-dom';
-import {AiOutlineMenu, AiFillHome, AiTwotoneShop, AiOutlineSearch, AiOutlineUser} from 'react-icons/ai';
+import {AiOutlineMenu, AiFillHome, AiTwotoneShop, AiOutlineUser} from 'react-icons/ai';
+import {FaSearch} from 'react-icons/fa';
 import { HiShoppingCart } from "react-icons/hi"
 const Navbar = () => {
     const bg = useColorModeValue('white', 'gray.800');
@@ -92,7 +93,7 @@ const Navbar = () => {
                     <HStack alignItems="center" w={['100%', '100%', '100%', '45%']} mx={2}>
                         <InputGroup display={{base:'none', md:"block"}} >
                             <InputRightElement
-                            children={<AiOutlineSearch/>}
+                            children={<FaSearch/>}
                             cursor='pointer'
                             />
                             <Input
@@ -161,7 +162,7 @@ const Navbar = () => {
                 <HStack alignSelf="center" alignItems="center" w={['100%', '100%', '100%', '45%']} mt={5} mx={2} display={{base:'block', md:"none"}}>
                         <InputGroup >
                             <InputRightElement
-                            children={<AiOutlineSearch/>}
+                            children={<FaSearch/>}
                             cursor='pointer'
                             />
                             <Input
