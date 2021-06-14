@@ -11,25 +11,24 @@ SwiperCore.use([Navigation]);
 
 const CartSlider = () => {
     const breakpoints={
-        "479":{
-            "slidePerView":1,
-            "spaceBetween":30
+        "640": {
+          "slidesPerView": 2,
+          "spaceBetween": 20
         },
-        "767":{
-            "slidePerView":2,
-            "spaceBetween":10
+        "768": {
+          "slidesPerView": 3,
+          "spaceBetween": 40
         },
-        "991":{
-            "slidePerView":4,
-            "spaceBetween":10
+        "1024": {
+          "slidesPerView": 5,
+          "spaceBetween": 50
         }
-    }
+      }
     return (
         <Flex
         h='100vh'
         bg='gray.200'
         alignItems='center'
-        justifyContent='center'
         >
             <Swiper 
             breakpoints={breakpoints}
